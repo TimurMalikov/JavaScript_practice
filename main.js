@@ -1,5 +1,7 @@
 'use strict';
 
+// Exercise 1
+
 let num = 26;
 let Num = 4;
 let str = 'congratulation';
@@ -14,6 +16,8 @@ console.log(num + Num);
 console.log(num - Num);
 console.log(num * Num);
 console.log(num / Num);
+
+// Exercise 2*
 
 let value = [];
 
