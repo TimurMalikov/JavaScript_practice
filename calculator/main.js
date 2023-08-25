@@ -138,19 +138,19 @@ submitBtn.onclick = function() {
 let result = null;
 
 if(operatorInput === "+") {
-    result = Number(firstInput) + Number(secondInput);
+    result = +firstInput + +secondInput;
     printResult(result);
     clearMessage();  
 } else if (operatorInput === "-") {
-    result = Number(firstInput) - Number(secondInput);
+    result = +firstInput - +secondInput;
     printResult(result);
     clearMessage();
 } else if(operatorInput === "*") {
-    result = Number(firstInput) * Number(secondInput);
+    result = +firstInput * +secondInput;
     printResult(result);
     clearMessage(); 
 } else if(operatorInput === "/") {
-    result = Number(firstInput) / Number(secondInput);
+    result = +firstInput / +secondInput;
     printResult(result);
     clearMessage();      
 } else {
