@@ -21,6 +21,7 @@ const errorPass = document.querySelector('.err-pass1');
 const passwordCnfrmInput = document.querySelector('.input3');
 const errorPass1 = document.querySelector('.err-pass2');
 const buttonSubmit = document.querySelector('.submit-btn');
+const buttonClear = document.querySelector('.clear-btn'); // кнопка для быстрой очистки localStorage и перезагрузки стр
 
 function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -63,28 +64,30 @@ function isPassConfirmValide () {
     }
     }
 
+
+
 buttonSubmit.addEventListener('click', (event) => {
     event.preventDefault ();
     isEmailValide ();
     isPasswordValide ();
     isPassConfirmValide ();
+    let dataObj = {
+        mail: emailInput.value,
+        password: passwordInput.value,
+        cnfrmPass: passwordCnfrmInput.value
+    }
+    localStorage.setItem("dataObj", JSON.stringify(dataObj))
+    emailInput.value = "";  // Для проверки, выводятся ли данные в инпуты, стер значения при клике на кнопку отправить
+    passwordInput.value = "";
+    passwordCnfrmInput.value = "";
 })
 
+buttonClear.addEventListener('click', () => {
+    localStorage.clear();
+    location.reload()
+})
 
-
-
-
-const itemsInCart = [
-    { product: 'Носки', quantity: 3 },
-    { product: 'Штаны', quantity: 1 },
-    { product: 'Кепка', quantity: 1 },
-]
-
-const clonedCart = [...itemsInCart];
-
-console.log(itemsInCart);
-console.log(clonedCart);
-
-clonedCart[1].quantity = 5;
-console.log(clonedCart);
-console.log(itemsInCart);
+    let getObj = JSON.parse(localStorage.getItem('dataObj'))
+document.querySelector('.input1').value = getObj.mail; // Данные выводятся в инпуты после перезагрузки страницы
+document.querySelector('.input2').value = getObj.password;
+document.querySelector('.input3').value = getObj.cnfrmPass;
