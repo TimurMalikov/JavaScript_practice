@@ -87,7 +87,7 @@ buttonClear.addEventListener('click', () => {
     location.reload()
 })
 
-    let getObj = JSON.parse(localStorage.getItem('dataObj'))
+    let getObj = JSON.parse(localStorage.getItem('dataObj'));
 document.querySelector('.input1').value = getObj.mail; // Данные выводятся в инпуты после перезагрузки страницы
 document.querySelector('.input2').value = getObj.password;
 document.querySelector('.input3').value = getObj.cnfrmPass;
